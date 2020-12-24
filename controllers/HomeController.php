@@ -1,10 +1,10 @@
 <?php
-namespace App\controller;
+namespace App\controllers;
 
 class HomeController
 {
-    public function index()
-    {
-        echo "Hello";
-    }
+	public function index()
+	{
+		echo "Hello";
+	}
 }
