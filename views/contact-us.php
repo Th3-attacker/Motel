@@ -1,6 +1,6 @@
 <?php require_once VIEWS . '/partials/header.php'?>
-<div class="container">
-    <div class="card text-center d-flex justify-content-center" style="width: 30rem;">
+<div class="container d-flex justify-content-center">
+    <div class="card text-center d-flex justify-content-center mt-5 mb-5" style="width:30rem;">
         <div class="card-header">
             Contact-US
         </div>
@@ -23,7 +23,7 @@
             </form>
         </div>
         <div class="card-footer text-muted">
-            <button>Contacter</button>
+            <button class="btn btn-primary">Contacter</button>
         </div>
     </div>
 </div>
