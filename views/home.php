@@ -1,3 +1,4 @@
+<?php require_once VIEWS . '/partials/header.php'?>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -29,7 +30,7 @@
     </div>
     <div class="row mt-5">
         <div class="col-md-6">
-<h2 class="text-center">Center aligned text on all viewport sizes.</h2>
+            <h2 class="text-center">Center aligned text on all viewport sizes.</h2>
             <p class="text-break font-monospace ">
                 Réservez dans 85 000 destinations dans le monde. Site officiel de Booking.com.
                 Commentaires réels. Annulation gratuite. Confirmation instantanée.
@@ -53,3 +54,4 @@
         <img src="./public/images/bg.jpg" class="w-100 h-25" alt="">
     </div>
 </div>
+<?php require_once VIEWS . '/partials/footer.php'?>

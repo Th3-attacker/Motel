@@ -1,3 +1,4 @@
+<?php require_once VIEWS . '/partials/header.php'?>
 <div class="container">
     <div class="card text-center d-flex justify-content-center" style="width: 30rem;">
         <div class="card-header">
@@ -26,3 +27,4 @@
         </div>
     </div>
 </div>
+<?php require_once VIEWS . '/partials/footer.php'?>
