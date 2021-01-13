@@ -1,8 +1,6 @@
-<?php require_once './partials/header.php';?>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button>
+<a class="navbar-link" data-toggle="modal" data-target="#exampleModalLong">
+  Login
+</a>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -24,5 +22,3 @@
     </div>
   </div>
 </div>
-<!-- /.modal -->
-<?php require_once VIEWS . './partials/footer.php';

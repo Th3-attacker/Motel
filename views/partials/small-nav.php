@@ -1,7 +1,6 @@
 <nav class="navbar navbar-dark bg-dark ">
   <div class="container-fluid justify-content-end">
-<a data-target="#exampleModal" data-toggle="modal" title="Login" href="">Login</a>
+    <?php require_once VIEWS .'/partials/modal_login.php';?>
   </div>
-<?php require_once './views/modal_login.php';?>
 </nav>
 <!-- Modal -->
