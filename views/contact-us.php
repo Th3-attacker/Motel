@@ -23,7 +23,7 @@
             </form>
         </div>
         <div class="card-footer text-muted">
-            <button class="btn btn-primary">Contacter</button>
+            <button class="btn btn-lg btn-warning">Contacter</button>
         </div>
     </div>
 </div>
