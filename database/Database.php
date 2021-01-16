@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $db = new PDO('mysql:host=database;dbname=docker', 'root', 'tiger');
+    $db = new PDO('mysql:host=localhost;dbname=motel', 'root', '');
     return $db;
 } catch (PDOException $e) {
     echo $e->getMessage();
