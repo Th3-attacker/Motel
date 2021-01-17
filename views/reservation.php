@@ -1,7 +1,7 @@
 <?php require_once VIEWS . '/partials/header.php';?>
 
-<div class="contanier">
-    <div class="form">
+<div class="contanier pl-5 mt-5 mb-5">
+    <form action="?page=facture" method="POST">
         <div class="row text-center">
             <div class="col-md-2 form-groupe">
                 <label for="">date debut</label>
@@ -22,11 +22,11 @@
                     <option value="2">decorre</option>
                 </select>
             </div>
-            <div class="col-md-2 from-groupe mt-4">
+            <div class="col-md-2 from-groupe mb-2 mt-4">
                 <button class="form-control btn btn-warning">Reserver</button>
             </div>
         </div>
-    </div>
+</form>
 </div>
 
 

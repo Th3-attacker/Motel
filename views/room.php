@@ -2,7 +2,7 @@
 <div class="container mt-3 mb-3">
   <div class="row">
     <div class="col-md-4">
-      <form method="POST" action="">
+      <form method="POST" action="?page=reservation">
         <input type="hidden"  value="15" />
         <input type="hidden" value="12" />
         <div class="card">

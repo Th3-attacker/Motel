@@ -21,6 +21,10 @@ return [
         '_view' => VIEWS . DS . 'reservation.php',
         // '_controller' => 'RoomController'
     ],
+    'facture' => [
+        '_view' => VIEWS . DS . 'facture.php',
+        // '_controller' => 'RoomController'
+    ],
     '404' => [
         '_view' => VIEWS . DS . '404.php',
         // '_controller' => 'RoomController'
