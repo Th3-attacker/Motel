@@ -4,6 +4,7 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', __DIR__);
 define('VIEWS', ROOT . DS . 'views');
 require_once ROOT . DS . 'Core' . DS . 'Autoload.php';
+// require_once ROOT . DS . 'database' . DS . 'Database.php';
 
 \MamadouAlySy\Autoloader::register();
 
