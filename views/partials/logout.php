@@ -3,4 +3,4 @@ session_start();
 
 session_destroy();
 
-header('?page=home');
+header('location:?page=home');

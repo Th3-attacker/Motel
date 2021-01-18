@@ -1,6 +1,18 @@
 <?php
 
 return [
+    'admin' => [
+        '_view' => VIEWS . DS . 'admin/index.php',
+        // '_controller' => 'ContactController'
+    ],
+    'logout' => [
+        '_view' => VIEWS . DS . 'partials/logout.php',
+        // '_controller' => 'ContactController'
+    ],
+    'geust' => [
+        '_view' => VIEWS . DS . 'geust/index.php',
+        // '_controller' => 'ContactController'
+    ],
     'home' => [
         '_view' => VIEWS . DS . 'home.php',
         // '_controller' => 'HomeController@inddex'
@@ -27,6 +39,10 @@ return [
     ],
     '404' => [
         '_view' => VIEWS . DS . '404.php',
+        // '_controller' => 'RoomController'
+    ],
+    '405' => [
+        '_view' => VIEWS . DS . '405.php',
         // '_controller' => 'RoomController'
     ],
 ];

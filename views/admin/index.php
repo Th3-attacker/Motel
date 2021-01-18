@@ -1,65 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-    <title>Document</title>
-    <script>
-      tab.show();
-      var triggerEl = document.querySelector('#myTab a[href="#attent"]');
-      bootstrap.Tab.getInstance(triggerEl).show(); // Select tab by name
-    </script>
-  </head>
-  <body>
+<?php require_once VIEWS . DS . 'partials/header.php'?>
     <div class="container mt-5 mb-5">
-      <nav>
+      <nav class=" d-md-flex justify-content-center ">
         <div
-          class="d-grid gap-5 d-md-flex justify-content-md-center mb-5 nav nav-tabs"
+          class="d-grid gap-3 nav nav-tabs"
           id="nav-tab"
           role="tablist"
         >
           <a
             href="#nav-valide"
-            class="btn btn-success nav-link"
+            class="btn btn-success nav-link active"
             id="nav-valide-tab"
-            data-bs-toggle="tab"
+            data-toggle="tab"
             role="tab"
             aria-controls="nav-valide"
             aria-selected="true"
           >
-            Reservation Valide
+             Valide
           </a>
           <a
             href="#nav-attent"
-            class="btn btn-success nav-link"
+            class="btn btn-danger nav-link"
             id="nav-attent-tab"
-            data-bs-toggle="tab"
+            data-toggle="tab"
             role="tab"
             aria-controls="nav-attent"
             aria-selected="true"
           >
-            Reservation Attent
+             Attent
           </a>
           <a
             href="#nav-programmer"
-            class="btn btn-success nav-link"
+            class="btn btn-warning nav-link"
             id="nav-programmer-tab"
-            data-bs-toggle="tab"
+            data-toggle="tab"
             role="tab"
             aria-controls="nav-programmer"
             aria-selected="true"
           >
-            Reservation programmer
+             programmer
           </a>
         </div>
       </nav>
-      <div class="tab-content" id="nav-tabContent">
+      <div class="tab-content " id="nav-tabContent">
         <div
           class="tab-pane fade show active"
           id="nav-valide"
@@ -91,7 +73,7 @@
           </table>
         </div>
         <div
-          class="tab-pane fade show"
+          class="tab-pane fade "
           id="nav-attent"
           role="tabpanel"
           aria-labelledby="nav-attent-tab"
@@ -121,7 +103,7 @@
           </table>
         </div>
         <div
-          class="tab-pane fade show"
+          class="tab-pane fade"
           id="nav-programmer"
           role="tabpanel"
           aria-labelledby="nav-programmer-tab"
@@ -152,5 +134,4 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+<?php require_once VIEWS . DS . 'partials/footer.php'?>

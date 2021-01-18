@@ -11,8 +11,8 @@
                     <input type="text" name="" id="" class="form-control">
                 </div>
                 <div class="form-groupe">
-                    <label for="">Username</label>
-                    <input type="text" name="" id="" class="form-control">
+                    <label for="">E-mail</label>
+                    <input type="email" name="" id="" class="form-control">
                 </div>
                 <div class="form-groupe">
                     <label for="">Message</label>

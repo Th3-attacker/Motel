@@ -4,21 +4,22 @@ if (!empty($_POST)) {
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $username = $_POST['username'];
         $password = sha1($_POST['password']);
-        session_start();
         $_SESSION['PROFILE'] = $_POST['username'];
         $requette = 'SELECT * FROM users WHERE username = ? and password = ?';
         $result = $db->prepare($requette);
         $result->execute([$username, $password]);
         if ($user = $result->fetch()) {
-            echo 'ok';
+            $_SESSION['is_connected'] = true;
+            $_SESSION['ROLE'] = $user['role'];
+            header('location:?page=home');
         } else {
-            echo 'non ok';
+            header('location:?page=405');
         }
     }
 }
 
 ?>
-<a class="navbar-link" data-toggle="modal" data-target="#exampleModalLong">
+<a class="navbar-link btn btn-small btn-primary d-flex justify-content-end" data-toggle="modal" data-target="#exampleModalLong">
   Login
 </a>
 
