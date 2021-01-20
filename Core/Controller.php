@@ -1,6 +1,6 @@
 <?php
 
-namespace MamadouAlySy\Core;
+namespace App\Core;
 
 abstract class Controller
 {

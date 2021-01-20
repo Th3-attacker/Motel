@@ -1,6 +1,6 @@
 <?php
 
-namespace MamadouAlySy;
+namespace App;
 
 class Autoloader
 {

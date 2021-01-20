@@ -1,6 +1,6 @@
 <?php
 
-namespace MamadouAlySy\Core;
+namespace App\Core;
 
 use PDO;
 use PDOException;
@@ -14,10 +14,10 @@ class Database
 
     public function __construct(array $credentials)
     {
-        static::$dsn      = $credentials['dsn'];
+        static::$dsn = $credentials['dsn'];
         static::$username = $credentials['username'];
         static::$password = $credentials['password'];
-        static::$pdo      = null;
+        static::$pdo = null;
     }
 
     public static function open()
@@ -29,7 +29,7 @@ class Database
                     static::$username,
                     static::$password,
                     [
-                        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
                     ]
                 );

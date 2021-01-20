@@ -1,6 +1,28 @@
-<?php require_once VIEWS . DS . 'partials/header.php'?>
+<?php
+
+use App\Core\Database;
+
+require_once VIEWS . DS . 'partials/header.php';
+$programmer = "SELECT id_reserve, date_debut , date_fin, username, name
+FROM reservations INNER JOIN Rooms on Rooms.id = reservations.id_room
+INNER JOIN users on users.id = reservations.id_guest WHERE statut = 0";
+$valider = "SELECT id_reserve, date_debut , date_fin, username, name
+FROM reservations INNER JOIN Rooms on Rooms.id = reservations.id_room
+INNER JOIN users on users.id = reservations.id_guest WHERE statut = 1";
+$attente = "SELECT id_reserve, date_debut , date_fin, username, name
+FROM reservations INNER JOIN Rooms on Rooms.id = reservations.id_room
+INNER JOIN users on users.id = reservations.id_guest WHERE statut = 2";
+
+$programe = Database::open()->prepare($programmer);
+$valide = Database::open()->prepare($valider);
+$attent = Database::open()->prepare($attente);
+$result1 = $programe->execute();
+$result2 = $valide->execute();
+$result3 = $attent->execute();
+Database::close();
+?>
     <div class="container mt-5 mb-5">
-      <nav class=" d-md-flex justify-content-center ">
+      <nav class="d-flex justify-content-center">
         <div
           class="d-grid gap-3 nav nav-tabs"
           id="nav-tab"
@@ -18,6 +40,7 @@
              Valide
           </a>
           <a
+            style="margin-left:15px;"
             href="#nav-attent"
             class="btn btn-danger nav-link"
             id="nav-attent-tab"
@@ -26,9 +49,10 @@
             aria-controls="nav-attent"
             aria-selected="true"
           >
-             Attent
+             Rejeter
           </a>
           <a
+            style="margin-left:15px;"
             href="#nav-programmer"
             class="btn btn-warning nav-link"
             id="nav-programmer-tab"
@@ -51,24 +75,23 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First1</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Action</th>
+                <th scope="col">Id_reservaation</th>
+                <th scope="col">Date debut</th>
+                <th scope="col">Date fin</th>
+                <th scope="col">Client</th>
+                <th scope="col">type Chambre</th>
               </tr>
             </thead>
             <tbody>
+              <?php foreach ($valide as $val): ?>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td class="gap-2 d-flex justify-content-md-center">
-                  <button class="btn btn-success">accepeter</button>
-                  <button class="btn btn-danger">rejeter</button>
-                </td>
+                <th scope="row"><?=$val->id_reserve;?></th>
+                <td><?=$val->date_debut?></td>
+                <td><?=$val->date_fin?></td>
+                <td><?=$val->username;?></td>
+                <td><?=$val->name?></td>
               </tr>
+                <?php endforeach;?>
             </tbody>
           </table>
         </div>
@@ -81,24 +104,23 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First2</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Action</th>
+                <th scope="col">Id_reservaation</th>
+                <th scope="col">Date debut</th>
+                <th scope="col">Date fin</th>
+                <th scope="col">Client</th>
+                <th scope="col">type Chambre</th>
               </tr>
             </thead>
             <tbody>
+              <?php foreach ($attent as $att): ?>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td class="gap-2 d-flex justify-content-md-center">
-                  <button class="btn btn-success">accepeter</button>
-                  <button class="btn btn-danger">rejeter</button>
-                </td>
+                <th scope="row"><?=$att->id_reserve;?></th>
+                <td><?=$att->date_debut?></td>
+                <td><?=$att->date_fin?></td>
+                <td><?=$att->username;?></td>
+                <td><?=$att->name?></td>
               </tr>
+                <?php endforeach;?>
             </tbody>
           </table>
         </div>
@@ -111,24 +133,30 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First3</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Id_reservaation</th>
+                <th scope="col">Date debut</th>
+                <th scope="col">Date fin</th>
+                <th scope="col">Client</th>
+                <th scope="col">type Chambre</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
+              <?php foreach ($programe as $prog): ?>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row"><?=$prog->id_reserve;?></th>
+                <td><?=$prog->date_debut?></td>
+                <td><?=$prog->date_fin?></td>
+                <td><?=$prog->username;?></td>
+                <td><?=$prog->name?></td>
                 <td class="gap-2 d-flex justify-content-md-center">
-                  <button class="btn btn-success">accepeter</button>
-                  <button class="btn btn-danger">rejeter</button>
+                <form action="" method="GET">
+                  <a href="./views/partials/statut1.php?id_reserve=<?=$prog->id_reserve;?>" type="submit" name="submit" value="Accepter" class="btn btn-success">Accepter</a>
+                  <a href="./views/partials/statut2.php?id_reserve=<?=$prog->id_reserve;?>" type="submit" name="submit" value="Rejeter" class="btn btn-danger">Rejeter</a>
+                </form>
                 </td>
               </tr>
+                <?php endforeach;?>
             </tbody>
           </table>
         </div>

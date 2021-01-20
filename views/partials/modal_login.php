@@ -1,23 +1,5 @@
-<?php require_once './database/Database.php'?>
 <?php
-if (!empty($_POST)) {
-    if (!empty($_POST['username']) && !empty($_POST['password'])) {
-        $username = $_POST['username'];
-        $password = sha1($_POST['password']);
-        $_SESSION['PROFILE'] = $_POST['username'];
-        $requette = 'SELECT * FROM users WHERE username = ? and password = ?';
-        $result = $db->prepare($requette);
-        $result->execute([$username, $password]);
-        if ($user = $result->fetch()) {
-            $_SESSION['is_connected'] = true;
-            $_SESSION['ROLE'] = $user['role'];
-            header('location:?page=home');
-        } else {
-            header('location:?page=405');
-        }
-    }
-}
-
+Login();
 ?>
 <a class="navbar-link btn btn-small btn-primary d-flex justify-content-end" data-toggle="modal" data-target="#exampleModalLong">
   Login
@@ -42,7 +24,7 @@ if (!empty($_POST)) {
               <input type="password" name="password" id="" class="form-control" required>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a type="submit" class="btn btn-secondary"  href="?page=register">S'inscrire</a>
             <button type="submit"  name="submit" class="btn btn-primary">Connecter</button>
           </div>
         </form>

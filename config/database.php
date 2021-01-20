@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'dsn'      => 'mysql:host=database;dbname=motel',
+    'dsn' => 'mysql:host=localhost;dbname=motel',
     'username' => 'root',
-    'password' => 'tiger',
+    'password' => '',
 ];

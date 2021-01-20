@@ -9,6 +9,18 @@ return [
         '_view' => VIEWS . DS . 'partials/logout.php',
         // '_controller' => 'ContactController'
     ],
+    'register' => [
+        '_view' => VIEWS . DS . 'partials/modal_registre.php',
+        // '_controller' => 'ContactController'
+    ],
+    'statut1' => [
+        '_view' => VIEWS . DS . 'partials/statut1.php',
+        // '_controller' => 'ContactController'
+    ],
+    'statut2' => [
+        '_view' => VIEWS . DS . 'partials/statut2.php',
+        // '_controller' => 'ContactController'
+    ],
     'geust' => [
         '_view' => VIEWS . DS . 'geust/index.php',
         // '_controller' => 'ContactController'

@@ -1,8 +1,8 @@
 <?php
 
-namespace MamadouAlySy\Models;
+namespace App\Models;
 
-use MamadouAlySy\Core\Model;
+use App\Core\Model;
 
 class Users extends Model
 {
