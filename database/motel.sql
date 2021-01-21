@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : Dim 17 jan. 2021 à 22:44
+-- Généré le : jeu. 21 jan. 2021 à 01:06
 -- Version du serveur :  10.4.16-MariaDB
 -- Version de PHP : 7.4.12
 
@@ -24,33 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `guest`
---
-
-CREATE TABLE `guest` (
-  `id` int(11) NOT NULL,
-  `Nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `date_naisse` date NOT NULL,
-  `ville` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `reservations`
 --
 
 CREATE TABLE `reservations` (
-  `id` int(11) NOT NULL,
-  `date_debut` date NOT NULL,
-  `date_fin` date NOT NULL,
+  `id_reserve` int(11) NOT NULL,
+  `date_debut` varchar(255) NOT NULL,
+  `date_fin` varchar(255) NOT NULL,
   `id_guest` int(11) NOT NULL,
-  `id_room` int(11) NOT NULL
+  `id_room` int(11) NOT NULL,
+  `statut` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `reservations`
+--
+
+INSERT INTO `reservations` (`id_reserve`, `date_debut`, `date_fin`, `id_guest`, `id_room`, `statut`) VALUES
+(1, '2021/01/23', '2021/01/24', 2, 1, 1),
+(2, '2021/01/23', '2021/01/25', 2, 2, 2),
+(3, '2021/01/26', '2021/01/30', 2, 1, 2),
+(4, '2021/01/22', '2021/01/24', 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -60,11 +54,17 @@ CREATE TABLE `reservations` (
 
 CREATE TABLE `Rooms` (
   `id` int(11) NOT NULL,
-  `Nom` varchar(30) NOT NULL,
-  `num_room` int(11) NOT NULL,
-  `nombre_personne` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `Rooms`
+--
+
+INSERT INTO `Rooms` (`id`, `name`, `id_user`) VALUES
+(1, 'Simple', 1),
+(2, 'Complexe', 1);
 
 -- --------------------------------------------------------
 
@@ -75,33 +75,34 @@ CREATE TABLE `Rooms` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL DEFAULT 0,
+  `nom` varchar(30) NOT NULL,
+  `prenom` varchar(30) NOT NULL,
+  `numero` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
+INSERT INTO `users` (`id`, `username`, `password`, `role`, `nom`, `prenom`, `numero`, `email`) VALUES
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'haje', 'malik', 37737353, 'haje.ndiaye@gmail.com'),
+(2, 'client1', '8cb2237d0679ca88db6464eac60da96345513964', 0, 'Hadra', 'Taher', 22225455, 'ha@gmail.com'),
+(5, 'client2', '4fd505f8aeed956f068c4ce57bfc30a6131b7c79', 0, 'sidi', 'brahim', 25259898, 'sidi@gmail.com');
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `guest`
---
-ALTER TABLE `guest`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Index pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_reserve`),
   ADD KEY `fk_id_room` (`id_room`),
-  ADD KEY `fk_id_guest` (`id_guest`);
+  ADD KEY `fk_id_geust` (`id_guest`);
 
 --
 -- Index pour la table `Rooms`
@@ -121,28 +122,22 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT pour la table `guest`
---
-ALTER TABLE `guest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_reserve` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `Rooms`
 --
 ALTER TABLE `Rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées
@@ -152,7 +147,7 @@ ALTER TABLE `users`
 -- Contraintes pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  ADD CONSTRAINT `fk_id_guest` FOREIGN KEY (`id_guest`) REFERENCES `guest` (`id`),
+  ADD CONSTRAINT `fk_id_geust` FOREIGN KEY (`id_guest`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `fk_id_room` FOREIGN KEY (`id_room`) REFERENCES `Rooms` (`id`);
 
 --
