@@ -1,17 +1,17 @@
 <?php
 
 use App\Core\Database;
-
+$id_geust = $_SESSION['id'];
 require_once VIEWS . DS . 'partials/header.php';
 $programmer = "SELECT id_reserve, date_debut , date_fin, username, name
 FROM reservations INNER JOIN Rooms on Rooms.id = reservations.id_room
-INNER JOIN users on users.id = reservations.id_guest WHERE statut = 0";
+INNER JOIN users on users.id = reservations.id_guest WHERE statut = 0 and reservations.id_guest=$id_geust";
 $valider = "SELECT id_reserve, date_debut , date_fin, username, name
 FROM reservations INNER JOIN Rooms on Rooms.id = reservations.id_room
-INNER JOIN users on users.id = reservations.id_guest WHERE statut = 1";
+INNER JOIN users on users.id = reservations.id_guest WHERE statut = 1 and reservations.id_guest=$id_geust";
 $attente = "SELECT id_reserve, date_debut , date_fin, username, name
 FROM reservations INNER JOIN Rooms on Rooms.id = reservations.id_room
-INNER JOIN users on users.id = reservations.id_guest WHERE statut = 2";
+INNER JOIN users on users.id = reservations.id_guest WHERE statut = 2 and reservations.id_guest=$id_geust";
 
 $programe = Database::open()->prepare($programmer);
 $valide = Database::open()->prepare($valider);
